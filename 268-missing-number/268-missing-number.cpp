@@ -2,7 +2,6 @@ class Solution {
 public:
     int missingNumber(vector<int>& nums) 
     {
-        int missed=-1;
         sort(nums.begin(), nums.end());
         if(nums[0]!=0)
             return 0;
