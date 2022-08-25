@@ -2,22 +2,14 @@ class Solution {
 public:
     bool canConstruct(string ransomNote, string magazine) 
     {
-        unordered_map<char, int> r,m;
+        int r[26]={0}, m[26]={0};
         for(char ch:ransomNote)
-            r[ch]++;
+            r[ch-'0'-49]++;
         for(char ch:magazine)
-            m[ch]++;
-        for(auto it:r)
-        {
-            if(m.find(it.first) == m.end())
+            m[ch-'0'-49]++;
+        for(int i=0; i<26; i++)
+            if(m[i]<r[i] && r[i]>0)
                 return false;
-            else 
-            {
-                auto pos = m.find(it.first);
-                if(pos->second < it.second)
-                    return false;
-            }
-        }
         return true;
     }
 };
