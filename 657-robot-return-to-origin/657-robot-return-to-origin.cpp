@@ -5,17 +5,9 @@ public:
         int r=0, c=0;
         for(int i=0; i<moves.length(); i++)
         {
-            if(moves[i]=='U')
-                r++;
-            else if(moves[i]=='D')
-                r--;
-            else if(moves[i]=='L')
-                c--;
-            else if(moves[i]=='R')
-                c++;
+            r = (moves[i]=='U' ? r+1 : (moves[i]=='D' ? r-1 : r));
+            c = (moves[i]=='R' ? c+1 : (moves[i]=='L' ? c-1 : c));
         }
-        if(r==0 and c==0)
-            return true;
-        return false;
+        return (r==0 and c==0);
     }
 };
