@@ -1,24 +1,12 @@
 class Solution 
 {
-    public:
-    int getTime(vector<string>& garbage, vector<int>& travel, char toFind, int pos)
-    {
-        int travelTime=0, collectionTime=0;
-        for(int i=0; i<=pos; i++)
-        {
-            if(i!=pos)  
-                travelTime += travel[i];
-            for(char ch : garbage[i])
-                if(ch==toFind)
-                    collectionTime++;
-        }
-        return (travelTime + collectionTime);
-    }
-    
+    public:    
     int garbageCollection(vector<string>& garbage, vector<int>& travel) 
     {
-        int posM, posP, posG, metalCollect, paperCollect, glassCollect;
+        int posM=0, posP=0, posG=0, pos, finalResult;
         bool metalFound=false, paperFound=false, glassFound=false;
+        vector<int> travelTime(3,0), collectionTime(3,0);      
+        
         for(int i=garbage.size()-1; i>=0; i--)
         {
             if(garbage[i].find("M") != std::string::npos and metalFound==false)
@@ -38,11 +26,32 @@ class Solution
             }                
         }
         
-        metalCollect = (metalFound==true ? getTime(garbage, travel, 'M', posM) : 0);
-        paperCollect = (paperFound==true ? getTime(garbage, travel, 'P', posP) : 0);
-        glassCollect = (glassFound==true ? getTime(garbage, travel, 'G', posG) : 0);
-        
-        int finalResult = metalCollect + paperCollect + glassCollect;
+        pos = max(posM, max(posG, posP));
+        for(int i=0; i<=pos; i++)
+        {
+            if(i<posM)  
+                travelTime[0] += travel[i];
+            if(i<=posM)
+                for(char ch : garbage[i])
+                    if(ch=='M')
+                        collectionTime[0]++;
+            
+            if(i<posP)  
+                travelTime[1] += travel[i];
+            if(i<=posP)
+                for(char ch : garbage[i])
+                    if(ch=='P')
+                        collectionTime[1]++;
+            
+            if(i<posG)  
+                travelTime[1] += travel[i];
+            if(i<=posG)
+                for(char ch : garbage[i])
+                    if(ch=='G')
+                        collectionTime[1]++;
+        }
+         
+        finalResult = accumulate(travelTime.begin(), travelTime.end(), 0) + accumulate(collectionTime.begin(), collectionTime.end(), 0);
         return finalResult;
     }
 };
