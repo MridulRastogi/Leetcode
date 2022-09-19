@@ -1,23 +1,21 @@
 class Solution 
 {
     public:
-    long long minimumMoney(vector<vector<int>>& transactions)
+    long long theGreater(long long a, long long b)
     {
-        long long cost, cashback, losing_money = 0, current_money = 0, less, diff, result;
-
+        if(a>=b)
+            return a;
+        return b;
+    }
+    
+    long long minimumMoney (vector<vector<int>>& transactions)
+    {
+        long long money_lost = 0, current_money = 0;
         for(int i=0; i<transactions.size(); i++)
         {
-            cost     = transactions[i][0];
-            cashback = transactions[i][1];
-
-            less          = (cost <= cashback      ? cost : cashback     );
-            current_money = (less >= current_money ? less : current_money);
-
-            diff         = cost - cashback;
-            losing_money += (diff >= 0 ? diff : 0);
+            current_money = theGreater(current_money, min(transactions[i][0], transactions[i][1]));
+            money_lost += theGreater(0, transactions[i][0]-transactions[i][1]);
         }
-
-        result = current_money + losing_money;
-        return result;
+        return current_money + money_lost;
     }
 };
