@@ -1,6 +1,7 @@
 class Solution 
 {
     public:
+    
     int sum(vector<int>& vec)
     {
         int s = 0;
@@ -9,6 +10,7 @@ class Solution
                 s+=i;
         return s;
     }
+    
     vector<int> sumEvenAfterQueries(vector<int>& nums, vector<vector<int>>& queries)
     {
         vector<int> vec;
@@ -21,19 +23,19 @@ class Solution
             nums[queries[i][1]] += value;
             current              = nums[queries[i][1]];
 
-            if(recent%2 == 0)
+            if(!(recent&1))
             {
-                if(current%2 == 0)
+                if(!(current&1))
                 {
                     if(recent > current)
                         res -= abs(value);
                     else if(recent < current)
                         res += abs(value);
                 }
-                else if(abs(current)%2 == 1)
+                else if(abs(current)&1)
                     res -= recent;
             }
-            else if((abs(recent)%2)==1 and (abs(current)%2)==0)
+            else if(abs(recent)&1 and !(abs(current)&1))
                 res = res + current;
             vec.push_back(res);
         }
