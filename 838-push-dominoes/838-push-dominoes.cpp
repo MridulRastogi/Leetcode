@@ -14,16 +14,10 @@ class Solution
         }
     }
 
-    void ExecuteLL(string& dominoes, int left, int right)
-    {
-        for(int i=right; i>=left; i--)
-            dominoes[i] = 'L';
-    }
-
-    void ExecuteRR(string& dominoes, int left, int right)
+    void ExecuteFill(string& dominoes, int left, int right, char ch)
     {
         for(int i=left; i<=right; i++)
-            dominoes[i] = 'R';
+            dominoes[i] = ch;
     }
 
     string pushDominoes(string dominoes)
@@ -90,9 +84,9 @@ class Solution
             if(dominoes[left] == 'R' and dominoes[right] == 'L')
                 ExecuteRL(dominoes, left, right);
             else if(dominoes[left] == 'L' and dominoes[right] == 'L')
-                ExecuteLL(dominoes, left, right);
+                ExecuteFill(dominoes, left, right, 'L');
             else if(dominoes[left] == 'R' and dominoes[right] == 'R')
-                ExecuteRR(dominoes, left, right);
+                ExecuteFill(dominoes, left, right, 'R');
         }
 
         return dominoes;
