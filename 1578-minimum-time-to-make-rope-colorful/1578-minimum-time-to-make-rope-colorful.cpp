@@ -15,10 +15,8 @@ class Solution
             }
             else
             {
-                s -= maxn;
-                res += s;
-                s = nt[i];
-                maxn = nt[i];  
+                res += s-maxn;
+                s = maxn = nt[i];
             }
         }
         return res;
