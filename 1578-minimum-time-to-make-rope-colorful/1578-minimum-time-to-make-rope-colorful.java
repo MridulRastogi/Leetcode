@@ -2,8 +2,8 @@ class Solution
 {
     public int minCost(String colors, int[] nt) 
     {
-        int l=nt.length, s=nt[0], maxn=nt[0], res=0;
-        for(int i=1; i<l; i++)
+        int s=nt[0], maxn=nt[0], res=0;
+        for(int i=1; i<nt.length; i++)
         {
             if(colors.charAt(i) == colors.charAt(i-1))
             {
