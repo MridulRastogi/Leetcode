@@ -3,8 +3,6 @@ class Solution
     public:
     int minCost(string colors, vector<int>& nt) 
     {
-        colors += " ";
-        nt.push_back(1);
         int l=nt.size(), s=nt[0], maxn=nt[0], res=0;
         for(int i=1; i<l; i++)
         {
@@ -19,6 +17,6 @@ class Solution
                 s = maxn = nt[i];
             }
         }
-        return res;
+        return res+s-maxn;
     }
 };
