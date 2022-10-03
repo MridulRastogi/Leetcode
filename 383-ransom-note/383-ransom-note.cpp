@@ -4,9 +4,9 @@ public:
     {
         int r[26]={0}, m[26]={0};
         for(char ch:ransomNote)
-            r[ch-'0'-49]++;
+            r[ch-'a']++;
         for(char ch:magazine)
-            m[ch-'0'-49]++;
+            m[ch-'a']++;
         for(int i=0; i<26; i++)
             if(m[i]<r[i] && r[i]>0)
                 return false;
