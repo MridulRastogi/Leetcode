@@ -16,7 +16,6 @@ class Solution
                 s = maxn = nt[i];
             }
         }
-        res += s-maxn;
-        return res;     
+        return res+s-maxn;     
     }
 }
