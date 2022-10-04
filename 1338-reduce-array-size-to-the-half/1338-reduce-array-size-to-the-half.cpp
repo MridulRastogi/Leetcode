@@ -21,10 +21,9 @@ class Solution
         sort(freq.begin(), freq.end(), greater<int>());
         for(int i=0; i<freq.size(); i++)
         {
-            if((s+freq[i]) >= (l/2))
+            s+=freq[i];
+            if(s >= (l/2))
                 return i+1;
-            else
-                s+=freq[i];
         }
         return 0;       
     }
