@@ -5,29 +5,23 @@ class Solution
     {
         unordered_map<int, int> m;
         vector<int> vec;
-        int s=0, count=0, l=arr.size();
+        int s=0, l=arr.size();
         
         for(int i:arr)
             m[i]++;
-        
+        arr.clear();
         for(auto it:m)
-            vec.push_back(it.second);
+            arr.push_back(it.second);
         
-        sort(vec.begin(), vec.end(), greater<int>());
+        sort(arr.begin(), arr.end(), greater<int>());
                
-        for(int i:vec)
+        for(int i=0; i<arr.size(); i++)
         {
-            if((s+i) >= (l/2))
-            {
-                count++;
-                break;
-            }
+            if((s+arr[i]) >= (l/2))
+                return i+1;
             else
-            {
-                s += i;
-                count++;
-            }
+                s += arr[i];
         }
-        return count;
+        return 0;
     }
 };
