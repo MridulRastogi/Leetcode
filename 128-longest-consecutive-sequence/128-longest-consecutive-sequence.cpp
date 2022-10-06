@@ -9,18 +9,17 @@ public:
         for(int i:nums)
             s.insert(i);
         
-        auto it = s.begin();
-        int num = *it, maxi=1, c=1;
-        for(auto it=s.begin(); it!=s.end(); it++)
+        int num = *(s.begin()), maxi=1, c=1;
+        for(auto it:s)
         {
-            if(*it == (num+1))
+            if(it == (num+1))
                 c++;
             else
             {
                 maxi = max(maxi, c);
                 c = 1;
             }
-            num = *it;
+            num = it;
         }
         return max(maxi, c);
     }
