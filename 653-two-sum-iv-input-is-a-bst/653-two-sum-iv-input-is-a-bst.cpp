@@ -8,6 +8,8 @@ class Solution
     {
         if(!root)
             return;
+        if(res2)
+            return;
         if(root->val == value and root != z)
         {
             res2 = true;
