@@ -2,15 +2,15 @@ class Solution
 {
     public:
     TreeNode* head;
-    bool res = false, res2 = false;
+    bool res = false;
     
     void search(TreeNode* root, TreeNode* z, int value)
     {
-        if(!root or res2)
+        if(!root or res)
             return;
         if(root->val == value and root != z)
         {
-            res2 = true;
+            res = true;
             return;
         }
         search(root->left, z, value);
@@ -21,17 +21,14 @@ class Solution
     {
         if(!root)
             return;
-        if(!res2)
+        if(!res)
         {
             search(head, root, k-(root->val));   
             preorder(root->left, k);
             preorder(root->right, k);
         }
         else
-        {
-            res = true;
             return;
-        }
     }
     
     bool findTarget(TreeNode* root, int k) 
