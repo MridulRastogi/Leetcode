@@ -12,11 +12,13 @@ class Solution
         sort(vec.begin(), vec.end());
         
         for(int i=0; i<vec.size(); i++)
+        {
             if(maxi < vec[i].second)
             {
                 maxi = vec[i].second;
                 eid  = vec[i].first;
             }
+        }
         return eid;
     }
 };
