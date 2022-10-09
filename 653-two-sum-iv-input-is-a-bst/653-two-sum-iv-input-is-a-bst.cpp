@@ -31,6 +31,8 @@ class Solution
                 return;
             }
         }
+        if(res2)
+            return;
         preorder(root->left, k);
         preorder(root->right, k);
     }
