@@ -1,4 +1,3 @@
-
 class Solution 
 {
     public:
@@ -25,16 +24,14 @@ class Solution
         if(!res2)
         {
             search(head, root, k-(root->val));   
-            if(res2)
-            {
-                res = true;
-                return;
-            }
+            preorder(root->left, k);
+            preorder(root->right, k);
         }
-        if(res2)
+        else
+        {
+            res = true;
             return;
-        preorder(root->left, k);
-        preorder(root->right, k);
+        }
     }
     
     bool findTarget(TreeNode* root, int k) 
