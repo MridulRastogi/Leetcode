@@ -22,15 +22,13 @@ class Solution
     {
         if(root == NULL)
             return;
-        //if(root->val < k)
-        //{
+        if(res2 == false)
             search(head, root, k-(root->val));
-            if(res2 == true)
-            {
-                res = true;
-                return;
-            }
-        //}
+        if(res2 == true)
+        {
+            res = true;
+            return;
+        }
         preorder(root->left, k);
         preorder(root->right, k);
     }
