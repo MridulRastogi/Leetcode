@@ -6,9 +6,7 @@ class Solution
     
     void search(TreeNode* root, TreeNode* z, int value)
     {
-        if(!root)
-            return;
-        if(res2)
+        if(!root or res2)
             return;
         if(root->val == value and root != z)
         {
