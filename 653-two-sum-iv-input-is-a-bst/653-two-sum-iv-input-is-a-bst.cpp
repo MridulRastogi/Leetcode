@@ -7,9 +7,9 @@ class Solution
     
     void search(TreeNode* root, TreeNode* z, int value)
     {
-        if(root == NULL)
+        if(!root)
             return;
-        if(root->val == value and root!=z)
+        if(root->val == value and root != z)
         {
             res2 = true;
             return;
@@ -20,14 +20,16 @@ class Solution
     
     void preorder(TreeNode* root, int k)
     {
-        if(root == NULL)
+        if(!root)
             return;
-        if(res2 == false)
-            search(head, root, k-(root->val));
-        if(res2 == true)
+        if(!res2)
         {
-            res = true;
-            return;
+            search(head, root, k-(root->val));   
+            if(res2)
+            {
+                res = true;
+                return;
+            }
         }
         preorder(root->left, k);
         preorder(root->right, k);
