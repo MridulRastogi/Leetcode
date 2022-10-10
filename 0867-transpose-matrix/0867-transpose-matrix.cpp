@@ -3,14 +3,11 @@ class Solution
     public:
     vector<vector<int>> transpose(vector<vector<int>>& matrix) 
     {
-        int r = matrix.size(), c = matrix[0].size(), j = 0;
+        int r = matrix.size(), c = matrix[0].size();
         vector<vector<int>> vec(c, vector<int>(r));
-        for(vector<int>& log:matrix)
-        {
-            for(int i=0; i<c; i++)
-                vec[i][j] = log[i];
-            j++;
-        }
+        for(int i=0; i<r; i++)
+            for(int j=0; j<c; j++)
+                vec[j][i] = matrix[i][j];
         return vec;
     }
 };
