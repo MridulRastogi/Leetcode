@@ -20,8 +20,6 @@ class Solution
                 for(int col=0; col<=n-s; col++)
                 {
                     int rs=0, cs=0, pd=0, sd=0, checker;
-                    bool flag = true;
-
                     for(int i=0; i<s; i++)  
                     {
                         rs += grid[row][col+i] ;            // row sum
@@ -29,7 +27,6 @@ class Solution
                         pd += grid[row+i][col+i];           // principal diagonal sum
                         sd += grid[row+i][col+(s-1)-i];     // secondary diagonal sum
                     }
-                    
                     if(rs!=cs or cs!=pd or pd!=sd)                          // checking base case
                         continue;
                     if(!check(grid, row, col, s, rs, 0, true, false))       // if not then skipping to next iteration
