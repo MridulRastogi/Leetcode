@@ -3,7 +3,6 @@ class MyCircularQueue
     public:
     int k;
     deque<int> dq;
-
     MyCircularQueue(int size)
     {
         k = size;
@@ -11,50 +10,29 @@ class MyCircularQueue
     
     bool enQueue(int value) 
     {
-        if(dq.size()<k)
-        {
-            dq.push_back(value);
-            return true;
-        }
-        return false;
+        if(isFull())            return false;
+        dq.push_back(value);    return true;
     }
-    
     bool deQueue() 
     {
-        if(dq.size()!=0)
-        {
-            dq.pop_front();
-            return true;
-        }
-        return false;
+        if(isEmpty())    return false;
+        dq.pop_front();  return true;
     }
-    
     int Front() 
     {
-        if(dq.size()!=0)
-            return dq.front();    
-        return -1;
+        return (isEmpty() ? -1 : dq.front());
     }
-    
     int Rear() 
     {
-        if(dq.size()!=0)
-            return dq.back();    
-        return -1;
+        return (isEmpty() ? -1 : dq.back());
     }
-    
     bool isEmpty() 
     {
-        if(dq.size()==0)
-            return true;
-        return false;
+        return (dq.size()==0 ? true : false);
     }
-    
     bool isFull() 
     {
-        if(dq.size()==k)    
-            return true;
-        return false;
+        return (dq.size()==k ? true : false);
     }
 };
 
