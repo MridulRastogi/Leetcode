@@ -15,17 +15,17 @@ class Solution
         string result = "";
         for(int i=0; i<G; i++)
         {
-            sum    = (i>=L ? (a[i]-'0')+carry : (a[i]-'0')+(b[i]-'0')+carry);            
-            carry  = (sum>9 ? sum/10 : 0);
+            if(i>=L)
+                sum = (a[i]-'0') + carry;
+            else
+                sum = (a[i]-'0') + (b[i]-'0') + carry;
+            
+            carry = (sum>9 ? sum/10 : 0);
             sum    = sum%10;
             result = to_string(sum) + result;
         }
-        result = (carry>0 ? to_string(carry)+result : result);
+        if(carry > 0)
+            result = to_string(carry) + result;
         return result;
     }
 };
-
-/*
-0 1
-0 1 2
-*/
