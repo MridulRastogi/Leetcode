@@ -44,10 +44,6 @@ class Solution
     }
     vector<int> plusOne(vector<int>& digits) 
     {
-        string a = convert_vector_to_string(digits);
-        string b = "1";
-        string c = process(a,b);
-        vector<int> res = to_vector(c);
-        return res;
+        return to_vector( process( convert_vector_to_string(digits) , "1" ) );
     }
 };
