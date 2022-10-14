@@ -2,7 +2,7 @@
 class Solution 
 {
     public:
-    string cvts(vector<int>& vec)
+    string convert_vector_to_string(vector<int>& vec)
     {
         string res = "";
         for(int i=0; i<vec.size(); i++)
@@ -44,10 +44,6 @@ class Solution
     }
     vector<int> addToArrayForm(vector<int>& num, int k) 
     {
-        string a = cvts(num);
-        string b = to_string(k);
-        string r = process(a,b);
-        vector<int> result = to_vector(r);
-        return result;
+        return to_vector( process( convert_vector_to_string(num) , to_string(k) ) );
     }
 };
