@@ -3,23 +3,20 @@ class Solution
     public:
     string cas(string s)
     {
-        vector<pair<char, int>> vec;
         int c=1;
+        string str = "";
         for(int i=0; i<s.length()-1; i++)
         {
             if(s[i] == s[i+1])
                 c++;
             else
             {
-                vec.push_back(make_pair(s[i], c));
+                str = str + to_string(c) + s[i];
                 c = 1;
             }
         }
-        vec.push_back(make_pair(s[s.length()-1], c));
-        s = "";
-        for(int i=0; i<vec.size(); i++)
-            s = s + to_string(vec[i].second) + vec[i].first;
-        return s;
+        str = str + to_string(c) + s[s.length()-1];
+        return str;
     }
     string countAndSay(int n) 
     {
