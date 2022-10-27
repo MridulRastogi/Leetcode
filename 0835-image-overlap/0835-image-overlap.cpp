@@ -1,7 +1,11 @@
 #define vec vector<vector<int>>&
 class Solution 
 {
-    public:    
+    public:  
+    bool check(int a, int b, int len)
+    {
+        return ((a+b)>=0 and (a+b)<len);
+    }
     int largestOverlap(vec img1, vec img2) 
     {
         int len = img1.size(), counter, result = 0;
@@ -14,7 +18,7 @@ class Solution
                 {
                     for(int l=0; l<len; l++)
                     {
-                        if( ((k+i>=0 and k+i<len) and (l+j>=0 and l+j<len)) and (img1[k+i][l+j]==1 and img2[k][l]==1) )
+                        if(check(k,i,len) and check(l,j,len) and img1[k+i][l+j] and img2[k][l])
                         {
                             counter++;
                         }
