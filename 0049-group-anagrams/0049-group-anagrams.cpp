@@ -5,10 +5,9 @@ class Solution
     {
         unordered_map<string, vector<string>> mp;
         vector<vector<string>> res;
-        vector<string> st=strs;
-        int i, j, len = st.size(), minimum;
+        vector<string> st = strs;
 
-        for(i=0; i<len; i++)
+        for(int i=0; i<st.size(); i++)
         {
             sort(st[i].begin(), st[i].end());
             mp[st[i]].push_back(strs[i]);
