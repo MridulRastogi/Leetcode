@@ -8,10 +8,11 @@ class Solution
         vector<string> st=strs;
         int i, j, len = st.size(), minimum;
 
-        for(i=0; i<st.size(); i++)
+        for(i=0; i<len; i++)
+        {
             sort(st[i].begin(), st[i].end());
-        for(int i=0; i<len; i++)
             mp[st[i]].push_back(strs[i]);
+        }
         for(auto it:mp)
             res.push_back(it.second);
         return res;   
