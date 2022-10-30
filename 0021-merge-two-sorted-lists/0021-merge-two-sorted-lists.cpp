@@ -19,22 +19,29 @@ class Solution
     }
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) 
     {
-        vector<int> vec;
         ListNode* ans = NULL;
+        while(list1 and list2)
+        {
+            if(list1->val <= list2->val)
+            {
+                ans = insertLast(ans, list1->val);
+                list1 = list1->next;
+            }
+            else if(list2->val <= list1->val)
+            {
+                ans = insertLast(ans, list2->val);
+                list2 = list2->next;
+            }
+        }
         while(list1)
         {
-            vec.push_back(list1->val);
+            ans = insertLast(ans, list1->val);
             list1 = list1->next;
         }
         while(list2)
         {
-            vec.push_back(list2->val);
+            ans = insertLast(ans, list2->val);
             list2 = list2->next;
-        }
-        sort(vec.begin(), vec.end());
-        for(int i:vec)
-        {
-            ans = insertLast(ans, i);
         }
         return ans;
     }
